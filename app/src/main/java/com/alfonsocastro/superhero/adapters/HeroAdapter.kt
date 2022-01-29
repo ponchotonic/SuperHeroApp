@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.alfonsocastro.superhero.R
 import com.alfonsocastro.superhero.databinding.HeroListItemBinding
 import com.alfonsocastro.superhero.model.Hero
 
@@ -12,15 +14,16 @@ import com.alfonsocastro.superhero.model.Hero
  * [ListAdapter] that implements [Hero] objects into [HeroViewHolder] using [HeroListItemBinding] ViewBinding
  */
 class HeroAdapter(private val onItemClicked: (Hero) -> Unit) : ListAdapter<Hero,
-        HeroAdapter.HeroViewHolder>(DiffCallback) {
+        HeroAdapter.HeroViewHolder>(HeroViewHolder) {
 
     // Creates a LayoutInflater from parent context. Then pass it to the HeroviewHolder constructer.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroViewHolder {
         // We create a normal [HeroViewHolder] inflating the Binding
         val viewHolder = HeroViewHolder(
-            HeroListItemBinding.inflate(LayoutInflater.from(parent.context)))
+            HeroListItemBinding.inflate(LayoutInflater.from(parent.context))
+        )
         // Then we call the onItemClicked to pass the current Hero
-        viewHolder.itemView.setOnClickListener{
+        viewHolder.itemView.setOnClickListener {
             val position = viewHolder.adapterPosition
             onItemClicked(getItem(position))
         }
@@ -36,7 +39,7 @@ class HeroAdapter(private val onItemClicked: (Hero) -> Unit) : ListAdapter<Hero,
     /**
      * A [RecyclerView.ViewHolder] that requires a [HeroListItemBinding].
      */
-    class HeroViewHolder(private var binding: HeroListItemBinding):
+    class HeroViewHolder(private var binding: HeroListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         /**
@@ -44,20 +47,20 @@ class HeroAdapter(private val onItemClicked: (Hero) -> Unit) : ListAdapter<Hero,
          * Then calls to execute pending bindings method.
          */
         fun bind(hero: Hero) {
-                binding.hero = hero
-                binding.executePendingBindings()
+            binding.heroImage.load(hero.image.url)
+            binding.heroName.text = hero.name
+            binding.heroId.text = binding.root.context.getString(R.string.id_format, hero.id)
+        }
+
+        companion object DiffCallback : DiffUtil.ItemCallback<Hero>() {
+            override fun areItemsTheSame(oldItem: Hero, newItem: Hero): Boolean {
+                return oldItem.id == newItem.id
             }
 
-    }
+            override fun areContentsTheSame(oldItem: Hero, newItem: Hero): Boolean {
+                return oldItem == newItem
+            }
 
-    companion object DiffCallback: DiffUtil.ItemCallback<Hero>(){
-        override fun areItemsTheSame(oldItem: Hero, newItem: Hero): Boolean {
-            return oldItem.id == newItem.id
         }
-
-        override fun areContentsTheSame(oldItem: Hero, newItem: Hero): Boolean {
-            return oldItem == newItem
-        }
-
     }
 }

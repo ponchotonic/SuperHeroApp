@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">SuperHero</string>
+    <!-- Super Hero List View Strings -->
+    <string name="id_format">ID: %1$s</string>
+    <!-- Super Hero Detail View Strings -->
     <string name="power_stats">PowerStats</string>
     <string name="power_stats_format">Intelligence: %1$s\nStrength: %2$s\nSpeed: %3$s\nDurability: %4$s\nPower: %5$s\nCombat: %6$s</string>
     <string name="biography">Biography</string>

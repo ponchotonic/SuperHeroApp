@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alfonsocastro.superhero.adapters.HeroAdapter
@@ -19,21 +20,20 @@ class HeroListFragment: Fragment() {
 
     private val viewModel: HeroListViewModel by viewModels()
 
+    private var _binding: FragmentHeroListBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        val binding = FragmentHeroListBinding.inflate(inflater)
+        _binding = FragmentHeroListBinding.inflate(inflater, container, false)
 
-        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
-        binding.lifecycleOwner = this
-
-        // Giving the binding access to the OverviewViewModel
-        binding.viewModel = viewModel
-
-        binding.heroListRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        binding.heroListRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
         binding.heroListRecyclerView.adapter = HeroAdapter {
             val action = HeroListFragmentDirections.actionHeroListFragmentToHeroDetailFragment(
                 heroId = it.id
@@ -41,11 +41,16 @@ class HeroListFragment: Fragment() {
             findNavController().navigate(action)
         }
 
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.heroes.observe(viewLifecycleOwner) { heroList ->
+            (binding.heroListRecyclerView.adapter as HeroAdapter).submitList(heroList)
+        }
     }
 
 }

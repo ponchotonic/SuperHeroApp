@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alfonsocastro.superhero.api.SuperHeroApi
-import com.alfonsocastro.superhero.api.SuperHeroApiService
 import com.alfonsocastro.superhero.model.Hero
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -42,6 +41,11 @@ class HeroListViewModel: ViewModel() {
                     SuperHeroApi.retrofitService.getHero(3),
                     SuperHeroApi.retrofitService.getHero(4),
                     SuperHeroApi.retrofitService.getHero(5),
+                    SuperHeroApi.retrofitService.getHero(6),
+                    SuperHeroApi.retrofitService.getHero(7),
+                    SuperHeroApi.retrofitService.getHero(8),
+                    SuperHeroApi.retrofitService.getHero(9),
+                    SuperHeroApi.retrofitService.getHero(10),
                 )
                 Log.d("HeroListViewModel", "Loaded ${_heroes.value?.size} heroes")
             } catch (e: Exception) {
