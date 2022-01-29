@@ -28,7 +28,6 @@ class HeroListViewModel: ViewModel() {
         getSuperHeroes()
     }
 
-
     /**
      * Gets Heroes information from the Mars API Retrofit service and updates the
      * [MarsPhoto] [List] [LiveData].

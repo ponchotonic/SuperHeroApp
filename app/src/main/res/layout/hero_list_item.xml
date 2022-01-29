@@ -12,7 +12,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="6dp"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp">
 
@@ -22,7 +22,7 @@
 
             <ImageView
                 android:id="@+id/hero_image"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="194dp"
                 android:importantForAccessibility="no"
                 android:scaleType="centerCrop"
@@ -30,6 +30,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_connection_error"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
             <TextView
@@ -47,7 +48,6 @@
                 tools:text="A-Bomb" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </com.google.android.material.card.MaterialCardView>
 

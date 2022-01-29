@@ -8,7 +8,13 @@
             type="com.alfonsocastro.superhero.ui.herolist.HeroListViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/hero_list_recycler_view"
+        listData="@{viewModel.heroes}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--<androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.alfonsocastro.superhero.ui.herolist.HeroListFragment">
@@ -16,8 +22,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/hero_list_recycler_view"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:scrollbars="vertical"
+            android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:listData="@{viewModel.heroes}"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -27,6 +32,6 @@
             tools:itemCount="16"
             tools:listitem="@layout/hero_list_item" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </layout>

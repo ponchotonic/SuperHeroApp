@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <data>
+        <variable
+            name="viewModel"
+            type="com.alfonsocastro.superhero.ui.herodetail.HeroDetailViewModel" />
+        <variable
+            name="hero"
+            type="com.alfonsocastro.superhero.model.Hero" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/hero_image"
+                android:layout_width="0dp"
+                android:layout_height="600dp"
+                android:importantForAccessibility="no"
+                app:imageUrl="@{hero.image.url}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/hero_name"
+                style="?attr/textAppearanceHeadline4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:text="@{hero.name}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hero_image"
+                tools:text="A-Bomb" />
+
+            <TextView
+                android:id="@+id/powerstats_label"
+                style="?attr/textAppearanceHeadline6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/power_stats"
+                app:layout_constraintStart_toStartOf="@+id/hero_name"
+                app:layout_constraintTop_toBottomOf="@+id/hero_name" />
+
+            <TextView
+                android:id="@+id/powerstats"
+                style="?attr/textAppearanceBody1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{hero.powerStats.intelligence}"
+                app:layout_constraintStart_toStartOf="@+id/hero_name"
+                app:layout_constraintTop_toBottomOf="@+id/powerstats_label"
+                tools:text="@string/power_stats_format" />
+
+            <TextView
+                android:id="@+id/bio_label"
+                style="?attr/textAppearanceHeadline6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/biography"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/hero_name"
+                app:layout_constraintTop_toBottomOf="@+id/powerstats" />
+
+            <TextView
+                android:id="@+id/bio"
+                style="?attr/textAppearanceBody1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/hero_name"
+                app:layout_constraintTop_toBottomOf="@+id/bio_label"
+                tools:text="@string/bio_format" />
+
+            <TextView
+                android:id="@+id/appearance_label"
+                style="?attr/textAppearanceHeadline6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/appearance"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/hero_name"
+                app:layout_constraintTop_toBottomOf="@+id/bio" />
+
+            <TextView
+                android:id="@+id/appearance"
+                style="?attr/textAppearanceBody1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/hero_name"
+                app:layout_constraintTop_toBottomOf="@+id/appearance_label"
+                tools:text="@string/appearance_format" />
+
+            <TextView
+                android:id="@+id/work_label"
+                style="?attr/textAppearanceHeadline6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/work"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/hero_name"
+                app:layout_constraintTop_toBottomOf="@+id/appearance" />
+
+            <TextView
+                android:id="@+id/work"
+                style="?attr/textAppearanceBody1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/hero_name"
+                app:layout_constraintTop_toBottomOf="@+id/work_label"
+                tools:text="@string/work_format" />
+
+            <TextView
+                android:id="@+id/connections_label"
+                style="?attr/textAppearanceHeadline6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/connections"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/hero_name"
+                app:layout_constraintTop_toBottomOf="@+id/work" />
+
+            <TextView
+                android:id="@+id/connections"
+                style="?attr/textAppearanceBody1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/hero_name"
+                app:layout_constraintTop_toBottomOf="@+id/connections_label"
+                tools:text="@string/connections_format" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

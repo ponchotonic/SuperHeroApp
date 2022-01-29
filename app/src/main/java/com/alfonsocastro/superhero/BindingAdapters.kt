@@ -27,4 +27,5 @@ fun bindRecyclerView(recyclerView: RecyclerView,
     val adapter = recyclerView.adapter as HeroAdapter
     Log.d("BindingAdapters", "Adapter has items? ${adapter.itemCount} items")
     adapter.submitList(data)
+    Log.d("BindingAdapters", "Adapter has items? ${adapter.itemCount} items")
 }

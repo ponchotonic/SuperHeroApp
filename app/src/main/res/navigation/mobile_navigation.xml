@@ -9,5 +9,18 @@
         android:id="@+id/heroListFragment"
         android:name="com.alfonsocastro.superhero.ui.herolist.HeroListFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_hero_list"/>
+        tools:layout="@layout/fragment_hero_list">
+        <action
+            android:id="@+id/action_heroListFragment_to_heroDetailFragment"
+            app:destination="@id/heroDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/heroDetailFragment"
+        android:name="com.alfonsocastro.superhero.ui.herodetail.HeroDetailFragment"
+        android:label="HeroDetailFragment"
+        tools:layout="@layout/fragment_hero_detail" >
+        <argument
+            android:name="heroId"
+            app:argType="string" />
+    </fragment>
 </navigation>

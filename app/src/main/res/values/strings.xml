@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">SuperHero</string>
+    <string name="power_stats">PowerStats</string>
+    <string name="power_stats_format">Intelligence: %1$s\nStrength: %2$s\nSpeed: %3$s\nDurability: %4$s\nPower: %5$s\nCombat: %6$s</string>
+    <string name="biography">Biography</string>
+    <string name="bio_format">Full Name: %1$s\nAlter egos: %2$s\nAliases: %3$s\nPlace of Birth: %4$s\nFirst Appearance: %5$s\nPublisher: %6$s\nAlignment: %7$s</string>
+    <string name="appearance">Appearance</string>
+    <string name="appearance_format">Gender: %1$s\nRace: %2$s\nHeight: %3$s\nWeight: %4$s\nEye Color: %5$s\nHair Color: %6$s</string>
+    <string name="work">Work</string>
+    <string name="work_format">Occupation: %1$s\nBase: %2$s</string>
+    <string name="connections">Connections</string>
+    <string name="connections_format">Connections: %1$s\nRelatives: %2$s</string>
 </resources>

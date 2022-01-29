@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alfonsocastro.superhero.adapters.HeroAdapter
@@ -32,7 +33,13 @@ class HeroListFragment: Fragment() {
         // Giving the binding access to the OverviewViewModel
         binding.viewModel = viewModel
 
-        binding.heroListRecyclerView.adapter = HeroAdapter()
+        binding.heroListRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        binding.heroListRecyclerView.adapter = HeroAdapter {
+            val action = HeroListFragmentDirections.actionHeroListFragmentToHeroDetailFragment(
+                heroId = it.id
+            )
+            findNavController().navigate(action)
+        }
 
         return binding.root
     }
