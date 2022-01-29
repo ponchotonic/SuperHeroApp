@@ -10,4 +10,4 @@ data class HeroBiography(
     @Json(name = "first-appearance") val firstAppearance: String,
     val publisher: String,
     val alignment: String
-    )
+)

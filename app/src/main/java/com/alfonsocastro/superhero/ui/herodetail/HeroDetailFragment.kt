@@ -11,7 +11,7 @@ import coil.load
 import com.alfonsocastro.superhero.R
 import com.alfonsocastro.superhero.databinding.FragmentHeroDetailBinding
 
-class HeroDetailFragment: Fragment() {
+class HeroDetailFragment : Fragment() {
 
     private val viewModel: HeroDetailViewModel by viewModels {
         HeroDetailViewModel.HeroDetailViewModelFactory(args.heroId)
@@ -20,6 +20,7 @@ class HeroDetailFragment: Fragment() {
     private val args: HeroDetailFragmentArgs by navArgs()
 
     private var _binding: FragmentHeroDetailBinding? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -48,7 +49,8 @@ class HeroDetailFragment: Fragment() {
             // Set Hero Name to TextView
             binding.heroName.text = hero.name
             // Set Hero PowerStats text
-            binding.powerstats.text = getString(R.string.power_stats_format,
+            binding.powerstats.text = getString(
+                R.string.power_stats_format,
                 hero.powerStats.intelligence,
                 hero.powerStats.strength,
                 hero.powerStats.speed,
@@ -57,7 +59,8 @@ class HeroDetailFragment: Fragment() {
                 hero.powerStats.combat
             )
             // Set Hero Biography text
-            binding.bio.text = getString(R.string.bio_format,
+            binding.bio.text = getString(
+                R.string.bio_format,
                 hero.biography.fullName,
                 hero.biography.alterEgos,
                 hero.biography.aliases.joinToString(),
@@ -67,7 +70,8 @@ class HeroDetailFragment: Fragment() {
                 hero.biography.alignment
             )
             // Set Hero Appearance text
-            binding.appearance.text = getString(R.string.appearance_format,
+            binding.appearance.text = getString(
+                R.string.appearance_format,
                 hero.appearance.gender,
                 hero.appearance.race,
                 hero.appearance.height.joinToString(),
@@ -76,12 +80,14 @@ class HeroDetailFragment: Fragment() {
                 hero.appearance.hairColor
             )
             // Set Hero Work text
-            binding.work.text = getString(R.string.work_format,
+            binding.work.text = getString(
+                R.string.work_format,
                 hero.work.occupation,
                 hero.work.base
             )
             // Set Hero Connections text
-            binding.connections.text = getString(R.string.connections_format,
+            binding.connections.text = getString(
+                R.string.connections_format,
                 hero.connections.groupAffiliation,
                 hero.connections.relatives
             )

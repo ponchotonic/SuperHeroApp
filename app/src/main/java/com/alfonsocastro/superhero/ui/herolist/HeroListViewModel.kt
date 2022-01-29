@@ -8,11 +8,10 @@ import androidx.lifecycle.viewModelScope
 import com.alfonsocastro.superhero.api.SuperHeroApi
 import com.alfonsocastro.superhero.model.Hero
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 enum class SuperHeroApiStatus { LOADING, ERROR, DONE }
 
-class HeroListViewModel: ViewModel() {
+class HeroListViewModel : ViewModel() {
 
     private val _status = MutableLiveData<SuperHeroApiStatus>()
     val status: LiveData<SuperHeroApiStatus> = _status

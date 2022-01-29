@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.alfonsocastro.superhero.R
+import com.alfonsocastro.superhero.adapters.HeroAdapter.HeroViewHolder
 import com.alfonsocastro.superhero.databinding.HeroListItemBinding
 import com.alfonsocastro.superhero.model.Hero
 

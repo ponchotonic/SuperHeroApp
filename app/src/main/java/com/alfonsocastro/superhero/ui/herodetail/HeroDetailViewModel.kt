@@ -4,10 +4,8 @@ import androidx.lifecycle.*
 import com.alfonsocastro.superhero.api.SuperHeroApi
 import com.alfonsocastro.superhero.model.Hero
 import kotlinx.coroutines.launch
-import java.lang.Exception
-import java.lang.IllegalArgumentException
 
-class HeroDetailViewModel(heroId: String): ViewModel() {
+class HeroDetailViewModel(heroId: String) : ViewModel() {
 
     private val _hero = MutableLiveData<Hero>()
     val hero: LiveData<Hero> = _hero
@@ -30,8 +28,8 @@ class HeroDetailViewModel(heroId: String): ViewModel() {
         }
     }
 
-    class HeroDetailViewModelFactory(private val heroId: String):
-            ViewModelProvider.Factory {
+    class HeroDetailViewModelFactory(private val heroId: String) :
+        ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(HeroDetailViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
