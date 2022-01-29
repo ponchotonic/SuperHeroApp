@@ -7,7 +7,7 @@
         <entry key="app/src/main/res/drawable/ic_connection_error.xml" value="0.2101851851851852" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3619791666666667" />
         <entry key="app/src/main/res/layout/fragment_hero_detail.xml" value="0.2657407407407407" />
-        <entry key="app/src/main/res/layout/fragment_hero_list.xml" value="0.12222222222222222" />
+        <entry key="app/src/main/res/layout/fragment_hero_list.xml" value="1.0" />
         <entry key="app/src/main/res/layout/hero_list_item.xml" value="0.2605128205128205" />
       </map>
     </option>

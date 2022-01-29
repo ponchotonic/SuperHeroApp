@@ -33,7 +33,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            tools:text="A-Bomb" />
+            tools:text="@tools:sample/full_names" />
 
         <TextView
             android:id="@+id/hero_id"
@@ -45,7 +45,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            tools:text="ID: 1" />
+            tools:text="@string/id_format" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

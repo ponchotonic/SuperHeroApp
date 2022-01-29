@@ -33,14 +33,12 @@ class HeroListFragment: Fragment() {
 
         _binding = FragmentHeroListBinding.inflate(inflater, container, false)
 
-        binding.heroListRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
-        binding.heroListRecyclerView.adapter = HeroAdapter {
+        binding.gridRecyclerView.adapter = HeroAdapter {
             val action = HeroListFragmentDirections.actionHeroListFragmentToHeroDetailFragment(
                 heroId = it.id
             )
             findNavController().navigate(action)
         }
-
 
         return binding.root
     }
@@ -49,7 +47,7 @@ class HeroListFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.heroes.observe(viewLifecycleOwner) { heroList ->
-            (binding.heroListRecyclerView.adapter as HeroAdapter).submitList(heroList)
+            (binding.gridRecyclerView.adapter as HeroAdapter).submitList(heroList)
         }
     }
 

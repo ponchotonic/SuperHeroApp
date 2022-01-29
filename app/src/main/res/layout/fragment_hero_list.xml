@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/hero_list_recycler_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:itemCount="16"
-    tools:listitem="@layout/hero_list_item" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.herolist.HeroListFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/grid_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:itemCount="6"
+        tools:listitem="@layout/hero_list_item" />
+
+</FrameLayout>
