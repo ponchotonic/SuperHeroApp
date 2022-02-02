@@ -1,17 +1,30 @@
 package com.alfonsocastro.superhero.ui.herolist
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.view.View
+import android.widget.ImageView
+import androidx.lifecycle.*
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.alfonsocastro.superhero.R
 import com.alfonsocastro.superhero.api.SuperHeroApi
+import com.alfonsocastro.superhero.data.SuperHeroPagingSource
 import com.alfonsocastro.superhero.model.Hero
+import com.alfonsocastro.superhero.repository.SuperHeroRepository
+import com.alfonsocastro.superhero.ui.herodetail.HeroDetailViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 
 enum class SuperHeroApiStatus { LOADING, ERROR, DONE }
 
-class HeroListViewModel : ViewModel() {
+class HeroListViewModel(private val repository: SuperHeroRepository) : ViewModel() {
+
+    // Paging
+    private var currentQueryValue: String? = null
+    private lateinit var currentSearchResult: Flow<PagingData<Hero>>
 
     private val _status = MutableLiveData<SuperHeroApiStatus>()
     val status: LiveData<SuperHeroApiStatus> = _status
@@ -19,11 +32,23 @@ class HeroListViewModel : ViewModel() {
     private val _heroes = MutableLiveData<List<Hero>>()
     val heroes: LiveData<List<Hero>> = _heroes
 
+
     /**
-     * Call getHeroes() on init so we can display status immediately.
+     * Call getNextSuperHeroes() on init so we can display status immediately.
      */
     init {
-        getSuperHeroes()
+        //Log.d("HeroListViewModel", "Init called. ${currentSearchResult.toString()}")
+        getNextSuperHeroes()
+    }
+
+    /**
+     *
+     */
+    fun getNextSuperHeroes(): Flow<PagingData<Hero>> {
+        val newResult: Flow<PagingData<Hero>> = repository.getSuperHeroResultStream()
+            .cachedIn(viewModelScope)
+        currentSearchResult = newResult
+        return newResult
     }
 
     /**
@@ -52,6 +77,17 @@ class HeroListViewModel : ViewModel() {
                 _heroes.value = listOf()
                 Log.d("HeroListViewModel", "Error", e)
             }
+        }
+    }
+
+    class HeroListViewModelFactory(private val repository: SuperHeroRepository):
+            ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(HeroListViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return HeroListViewModel(repository) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.alfonsocastro.superhero.api
 
 import android.util.Log
+import androidx.paging.PagingSource
 import com.alfonsocastro.superhero.model.Hero
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -33,16 +34,6 @@ private val retrofit = Retrofit.Builder()
  * A public interface that exposes the [getHero] method
  */
 interface SuperHeroApiService {
-
-    suspend fun getHeroes(): List<Hero> {
-        Log.d("SuperHeroApi", "Loading superheroes")
-        val heroes = mutableListOf<Hero>()
-        repeat(20) {
-            val hero = getHero(it)
-            heroes.add(hero)
-        }
-        return heroes
-    }
 
     /**
      * Returns a [Hero] and this method can be called from a Coroutine.

@@ -14,7 +14,7 @@ import com.alfonsocastro.superhero.databinding.FragmentHeroDetailBinding
 class HeroDetailFragment : Fragment() {
 
     private val viewModel: HeroDetailViewModel by viewModels {
-        HeroDetailViewModel.HeroDetailViewModelFactory(args.heroId)
+        HeroDetailViewModel.HeroDetailViewModelFactory(args.heroId.toInt())
     }
 
     private val args: HeroDetailFragmentArgs by navArgs()
