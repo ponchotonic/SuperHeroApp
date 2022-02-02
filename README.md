@@ -11,3 +11,5 @@ Uses:
 - ViewBinding
 - Moshi for Retrofit as converter
 - Coil for image load and display
+
+SuperHeroApi: https://superheroapi.com
